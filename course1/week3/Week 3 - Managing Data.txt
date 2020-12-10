@@ -1,0 +1,98 @@
+﻿Week 3 - Making Data Management Decisions
+Python Syntax:
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Aug 23 10:12:23 2020
+@author: Matt Clark
+This program will displays 3 data managed variables as frequency distributions. The data management methods used herein will be variable collapsing and converting invalid numerical data to Numpy NaN values, and collapse categorical data fields yielding new insights.
+"""
+import numpy as np
+import pandas as pd
+df = pd.read_csv('mycodebook.csv', low_memory=False)
+df1 = df.copy()
+print('1A. Counts for W1_C1', end="\n\n")
+party = df1['W1_C1'].value_counts(sort=False)
+print(party.sort_index(), end="\n\n")
+df1['W1_C1']=df1['W1_C1'].replace(-1, np.nan)
+print('1B. Counts for W1_C1, with -1 replaced with numpy.NaN', end="\n\n")
+party1 = df1['W1_C1'].value_counts(sort=False, dropna=False)
+print(party1.sort_index(), end="\n\n")
+# Convert PPEDUCAT and W1_F6 to binary data.
+def ISHS (row):
+   if row >= 2 :
+       return 1
+   else:
+       return 0
+df1['HS'] = df1['PPEDUCAT'].apply(ISHS)
+print('2A. Counts for original variable PPEDUCAT', end="\n\n")
+ppcounts = df1['PPEDUCAT'].value_counts(sort=False, dropna=False)
+print(ppcounts.sort_index(), end="\n\n")
+hsyn = df1['HS'].value_counts(sort=False, dropna=False)
+print('2B. Counts for new variable HS which indicates whether a person is or is not a High School Graduate', end="\n\n")
+print(hsyn.sort_index(), end="\n\n")
+# Takes W1_F6 as argument, and returns a variable that indicates whether the respondant is optimistic or not.
+def ISOPT (row):
+   if row >= 5 :
+       return 1
+   else:
+       return 0
+df1['OPT'] = df1['W1_F6'].apply(ISOPT)
+print('3A. Counts for original W1_F6 data', end="\n\n")
+w1f6counts = df1['W1_F6'].value_counts(sort=False, dropna=False)
+print(w1f6counts.sort_index(), end="\n\n")
+optyn = df1['OPT'].value_counts(sort=False, dropna=False)
+print('3B. Counts for OPT data, which indicates, somewhat arbitrarily, whether a person is or is not optimistic', end="\n\n")
+print(optyn.sort_index(), end="\n\n")
+Python Output:
+1A. Counts for W1_C1
+-1      49
+1     331
+2    1251
+3     555
+4     108
+Name: W1_C1, dtype: int64
+1B. Counts for W1_C1, with -1 replaced with numpy.NaN
+1.000000     331
+2.000000    1251
+3.000000     555
+4.000000     108
+nan           49
+Name: W1_C1, dtype: int64
+2A. Counts for original variable PPEDUCAT
+1    219
+2    700
+3    682
+4    693
+Name: PPEDUCAT, dtype: int64
+2B. Counts for new variable HS which indicates whether a person is or is not a High School Graduate
+0     219
+1    2075
+Name: HS, dtype: int64
+3A. Counts for original W1_F6 data
+-1      59
+1      70
+2      59
+3      98
+4     152
+5     362
+6     336
+7     440
+8     350
+9     165
+10    203
+Name: W1_F6, dtype: int64
+3B. Counts for OPT data, which indicates, somewhat arbitrarily, whether a person is or is not economically optimistic
+0     438
+1    1856
+Name: OPT, dtype: int64
+Summary:
+The data from my codebook don’t lend themselves particularly well to the methods demonstrated in the Week 3 videos and other resources. But in the spirit of demonstrating understanding of the concepts taught, I have performed some modifications to my data.
+
+
+The Outlook On Life variable W1_C1 allowed the number -1 to indicate that a response was skipped. I’ve removed the -1 responses and replaced them with np.nans so that the data might yield itself to numerical analysis if that was desired.
+
+
+The variables PPEDUCAT and W1_F6 survey respondents levels of education and economic optimism, categorically. I have reduced both of those variables to essentially binary yes/no questions: “Has the respondent at least a High School education?” And, “Is the respondent economically optimistic?”, showing the frequencies of both the original and condensed variables.
+
+
+Additionally I’d like to mention that the sample code attached to these modules has been, without elaborating too much, I hope, difficult to work with. But it’s intended to be used by a person with no prior programming experience? I pity that person. Considering the cost of this course, it seems like it would take a small amount of work to bring the materials up to date.
