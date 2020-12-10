@@ -1,0 +1,100 @@
+﻿Dataset / Codebook: 2012 Outlook On Life Survey
+
+
+Association:         W1_A1: How interested are you in what's going on in government and politics?
+                W1_F6: How far along the road to your American Dream do you think you will ultimately get on a 10-point scale where 1 is not far at all and 10 nearly there?
+                W1_C1_OTHER_TEXT: [Other] Generally speaking, do you usually think of yourself as a
+Democrat, a Republican, an Independent, or something else?
+
+
+Factors affecting economic optimism? race/gender/poliltical awareness/political affiliation/ political involvement
+Biological Attributes and attentional attributes
+
+
+PPEDUCAT: Education (Categorical)
+W1_P20: Which of the following income groups includes YOUR personal annual income (Do
+not include the income of other members of your household)?
+W1_P2: People talk about social classes such as the poor, the working class, the middle class,
+the upper-middle class, and the upper class. Which of these classes would you say you
+belong to?
+W1_F5_E: [To do better than one's parents did ] For your children or the children of people
+like yourself, how easy or hard will it be for your children to reach these goals in the future?
+W1_F4_E: [To do better than one's parents did ] For yourself and people like you, how easy or
+hard is it to reach these goals?
+W1_F3: A basic American belief has been that if you work hard you can get ahead and reach
+the goals you set and more. Is this true or false today?
+W1_C2: We hear a lot of talk these days about liberals and conservatives. Where would you
+place YOURSELF on this 7 point scale?
+W1_C1C: Do you think of yourself as closer to the Republican Party or to the Democratic
+Party?
+W1_C1B: Would you call yourself a strong [Democrat/Republican] or a not very strong
+[Democrat/Republican]?
+W1_C1: Generally speaking, do you usually think of yourself as a Democrat, a Republican, an
+Independent, or something else?
+W1_A1: How interested are you in what's going on in government and politics?
+PPETHM: Race / Ethnicity
+PPGENDER: Gender
+PPINCIMP: Household Income
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Coursera - Data Management and Visualization - Week 1 - Getting Your Research Project Started
+
+
+Step 1: The data set that I’ve chosen is Outlook on life surveys. 
+
+
+https://d396qusza40orc.cloudfront.net/phoenixassets/data-management-visualization/OutlookOnLife%20Codebook.pdf
+
+
+Step 2: For the purpose of this report, my topic of interest will be factors relating to economic optimism.
+
+
+W1_F6: How far along the road to your American Dream do you think you will ultimately get on a 10-point scale where 1 is not far at all and 10 nearly there?
+
+
+Step 3: MyCodebook.csv
+
+
+Step 4: A second topic of interest, the association between which and my first topic I will investigate, is level of education obtained.
+
+
+PPEDUCAT: Education (Categorical)
+
+
+Step 5: Mycodebook.csv
+
+
+Step 6: Literature Review: 
+
+
+Keywords: economic optimism
+
+
+https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1540-6237.2008.00551.x
+
+
+https://www.journals.uchicago.edu/doi/pdfplus/10.1086/494431
+
+
+Step 7.         Research Question: Does the level of education to which a person obtains correlate with their Economic Optimism? 
+
+
+Hypothesis: The level of education to which a person obtains correlates negatively or at most weakly, with his or her optimism that they will achieve the American Dream.
+
+
+https://ibelieveinyoutah.tumblr.com/post/626018588666576896/coursera-data-management-and-visualization
+https://ibelieveinyoutah.tumblr.com/post/626018588666576896/coursera-data-management-and-visualization
