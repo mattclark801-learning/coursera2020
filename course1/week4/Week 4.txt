@@ -1,0 +1,120 @@
+﻿Python Syntax:
+
+
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Aug 28 13:11:25 2020
+
+
+@author: Matt Clark
+
+
+Recall from week 1 the dataset chosen for our analysis was the Outlook On Life survey, and the research question we posed went as follows: "Does the level of education to which a person obtains correlate with their Economic Optimism?" Additionally, the hypothesis which we set forward to be tested was "The level of education to which a person obtains correlates negatively or at most weakly, with his or her optimism that they will achieve the American Dream." To this end, we will chart the data from the each of the education and american dream variables independently, then we'll chart them together letting level of education serve as our explanatory variable and economic optimism serve as our response variable. Because the variables are both categorical, we will follow the Graphing Flowchart for Printing, and choose bar charts in all cases.
+
+
+variables: 
+   education: PPEDUCAT
+   economic optimism: W1_F6
+
+
+"""
+
+
+#library imports.
+
+
+import pandas as pd
+import numpy as np
+import seaborn as sb
+import matplotlib.pyplot as plt
+
+
+#data import.
+
+
+df = pd.read_csv('myCodebook.csv', low_memory=False)
+df1 = df.copy()
+
+
+#univariate bar graphs for categorical variables PPEDUCAT and W1_F6.
+
+
+sb.countplot(x="PPEDUCAT", data=df)
+plt.xlabel('Level of Education Obtained')
+plt.title('PPEDUCAT')
+
+
+sb.countplot(x="W1_F6", data=df)
+plt.xlabel('Economic Optimism')
+plt.title('W1_F6')
+
+
+# This function collapses the categorical W1_F6 data into binary values.
+
+
+def ISOPT (row):
+  if row >= 5 :
+      return 1
+  else:
+      return 0
+
+
+# The following function performs the collapse of the data.    
+
+
+df1['OPT'] = df1['W1_F6'].apply(ISOPT)
+
+
+# bivariate bar graph Categorical -> Categorical
+sb.catplot(x="PPEDUCAT", y="OPT", data=df1, kind="bar", ci=None)
+plt.xlabel('Education')
+plt.ylabel('Economic Optimism')
+
+
+Graphical Output:
+
+
+Univariate Data PPEDUCAT:
+
+
+Univariate Data W1_F6
+
+
+Bivariate Data x: PPEDUCAT y: W1_F6
+
+
+Summary:
+
+
+Recall that for the week 1 assignment the dataset we chose was the Outlook on Life dataset, and the research question we posed was  “Does the level of education to which a person obtains correlate with their Economic Optimism?”
+
+
+Further, we hypothesized that  "The level of education to which a person obtains correlates negatively or at most weakly, with his or her optimism that they will achieve the American Dream."
+
+
+In some sense, this experiment was designed to show that the data provided would lend support to the elsewhere hypothesized Dunning-Kruger effect, a cognitive bias in which people with low ability at a task overestimate their ability, with our hypothesis serving as the H_0 which stood to be disproved or approved.
+
+
+As is made clear by the above charts, our data fail to provide support for the Dunning-Kruger effect. Chart 1 (labeled PPEDUCAT) shows that the level of education of the respondents to the survey in this data set may be distributed either uniformly (with less than high school serving as an outlier) or unimodally, with the mode of the data being high school or more education.
+The variable PPEDUCAT surveyed education level, categorically, allowing the following responses:
+
+
+1 Less than high school
+
+
+2 High school
+
+
+3 Some college
+
+
+4 Bachelor's degree or higher
+
+
+Chart 2 (labeled W1_F6) shows the distribution of the economic optimism of the respondents to the survey as measured by their confidence that they would obtain the American Dream, obtained through the answer to this survey question: “How far along the road to your American Dream do you think you will ultimately get on a 10-point scale where 1 is not far at all and 10 nearly there?”
+
+
+This data is distributed unimodally, with left kurtosis. 
+
+
+Finally, Chart 3 shows the optimism data (collapsed) plotted against the education data, showing a clearly positive association / correlation and our failure to demonstrate the Dunning-Kruger Effect.
