@@ -1,0 +1,130 @@
+﻿Program Syntax (Python Language):
+
+
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Aug 22 19:52:27 2020
+
+
+@author: Matt Clark
+
+
+This program displays the frequency distributions of four variables on a group of people interviewed for the data set: 
+   PPETHM: Race/Ethnicity 
+   PPEDUCAT: Education (Categorical)
+   W1_C1: Political Party
+   W1_F6: Economic Optimism (for obtaining the American Dream)
+
+
+"""
+
+
+import pandas as pd
+
+
+df = pd.read_csv('mycodebook.csv', low_memory=False)
+
+
+print('1. Counts for PPETHM – Ethnicity, 1 White, Non-Hispanic, 2 Black, Non-Hispanic, 3 Other, Non-Hispanic, 4 Hispanic, 5 2+ Races, Non-Hispanic')
+ethn = df['PPETHM'].value_counts(sort=False)
+print(ethn.sort_index(), end="\n\n")
+
+
+print('2. Counts for PPEDUCAT – Education, 1 Less than high school, 2 High school, 3 Some college, 4 Bachelor\'s degree or higher')
+edu = df['PPEDUCAT'].value_counts(sort=False)
+print(edu.sort_index(), end="\n\n")
+
+
+print('3. Countsfor W1_C1, -1 Refused, 1 Republican, 2 Democrat, 3 Independent, 4 Something else')
+party = df['W1_C1'].value_counts(sort=False)
+print(party.sort_index(), end="\n\n")
+
+
+print('4. Counts for W1_F6, -1: Refused, 1: Not Far, 10: Nearly There')
+ad = df['W1_F6'].value_counts(sort=False)
+print(ad.sort_index(), end="\n\n")
+
+
+Program Output:
+
+
+1. Counts for PPETHM – Ethnicity, 1 White, Non-Hispanic, 2 Black, Non-Hispanic, 3 Other, Non-Hispanic, 4 Hispanic, 5 2+ Races, Non-Hispanic
+1     814
+2    1278
+3      46
+4     123
+5      33
+Name: PPETHM, dtype: int64
+
+
+2. Counts for PPEDUCAT – Education, 1 Less than high school, 2 High school, 3 Some college, 4 Bachelor's degree or higher
+1    219
+2    700
+3    682
+4    693
+Name: PPEDUCAT, dtype: int64
+
+
+3. Countsfor W1_C1, -1 Refused, 1 Republican, 2 Democrat, 3 Independent, 4 Something else
+-1      49
+1     331
+2    1251
+3     555
+4     108
+Name: W1_C1, dtype: int64
+
+
+4. Counts for W1_F6, -1: Refused, 1: Not Far, 10: Nearly There
+-1      59
+1      70
+2      59
+3      98
+4     152
+5     362
+6     336
+7     440
+8     350
+9     165
+10    203
+Name: W1_F6, dtype: int64
+
+
+Summary:
+
+
+The data above are self explanatory and little outside of the header lines needs to be said that wasn’t remarked on in the week 1 assignment. The variable PPETHM surveyed Race/Ethnicity, where permitted responses were:  
+
+
+1 White, Non-Hispanic 
+2 Black, Non-Hispanic 
+3 Other, Non-Hispanic 
+4 Hispanic 
+5 2+ Races, Non-Hispanic
+
+
+The variable PPEDUCAT surveyed education level, categorically, allowing the following responses:
+
+
+1 Less than high school
+2 High school
+3 Some college
+4 Bachelor's degree or higher
+
+
+The variable W1_C1 categorically measured political sympathies, asking “Generally speaking, do you usually think of yourself as a Democrat, a Republican, an Independent, or something else?” with the following responses allowed:
+
+
+-1 Refused
+1 Republican
+2 Democrat
+3 Independent
+4 Something else, please specify
+
+
+Finally, the variable W1_F6 indicates Economic Optimism, with responses to the question “How far along the road to your American Dream do you think you will ultimately get on a 10-point scale where 1 is not far at all and 10 nearly there?” allowed in these forms:
+
+
+-1: Refused
+1: Not Far
+...
+10: Nearly There
